@@ -1,3 +1,9 @@
+import java.lang.ModuleLayer.Controller;
+
+import Controllers.BookController;
+import Models.Book;
+import View.ViewConsole;
+
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -33,6 +39,25 @@ public class App {
                 new Book("Deep Learning", 2016),
                 new Book("The Elements of Statistical Learning", 2001)
         };
-
+        ViewConsole vC = new ViewConsole();
+        vC.printMessage("----------------------Listado de libros---------------------- ");
+        vC.printArrayBooks(books);
+        BookController bC = new BookController();
+        bC.sortByName(books);
+        vC.printMessage("----------------------Listado de libros arreglado----------------------");
+        vC.printArrayBooks(books);
+         encontrado = bC.searchByName(books, "Python the best book")
+        if (encontrado.equals("null")) {
+            vC.printMessage("No se a encontrado el libro");
+        } else {
+            vC.printMessage("El libro ha sidocontrado" + encontrado);
+        }
+         encontrado2 = bC.searchByName(books, "Deep Learning").toString();
+        vC.printMessage(encontrado2);
+        if (encontrado2.equals("null")) {
+            vC.printMessage("No se a encontrado el libro");
+        } else {
+            vC.printMessage("El libro ha sidocontrado" + encontrado2);
+        }
     }
 }
